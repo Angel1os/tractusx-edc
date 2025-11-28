@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2021,2022 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Contributors
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -17,26 +17,25 @@
  * SPDX-License-Identifier: Apache-2.0
  ********************************************************************************/
 
-plugins {
-    `java-library`
+package org.eclipse.tractusx.edc.audit.spi;
+
+import org.eclipse.edc.spi.query.QuerySpec;
+import org.eclipse.edc.spi.result.StoreResult;
+import org.eclipse.tractusx.edc.audit.spi.types.AuditRecord;
+
+import java.util.stream.Stream;
+
+/**
+ * Abstraction for persisting and querying {@link AuditRecord}s.
+ */
+public interface AuditRegistryStore {
+
+    StoreResult<Void> save(AuditRecord record);
+
+    AuditRecord findById(String id);
+
+    StoreResult<Stream<AuditRecord>> query(QuerySpec querySpec);
+
+    int deleteOlderThan(long timestampMillis);
 }
 
-val defaultJvmArgs = listOf(
-    "-Dedc.fs.config=${rootDir}/configuration/config.properties",
-    "-Dedc.keystore=",
-    "-Dedc.keystore.password="
-)
-
-subprojects {
-    plugins.withType<ApplicationPlugin> {
-        extensions.configure<JavaApplication> {
-            applicationDefaultJvmArgs = defaultJvmArgs
-        }
-    }
-}
-
-dependencies {
-    implementation(project(":edc-controlplane:edc-controlplane-base"))
-    implementation(project(":edc-controlplane:edc-runtime-memory"))
-    implementation(project(":edc-controlplane:edc-controlplane-postgresql-hashicorp-vault"))
-}

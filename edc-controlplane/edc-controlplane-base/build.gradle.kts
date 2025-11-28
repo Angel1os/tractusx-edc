@@ -67,6 +67,7 @@ dependencies {
     implementation(project(":edc-extensions:trusted-issuers-hot-reload"))
     implementation(project(":edc-extensions:user-management"))
     implementation(project(":edc-extensions:gateway"))
+    implementation(project(":edc-extensions:audit-registry"))
     runtimeOnly(project(":edc-extensions:event-subscriber"))
 
     runtimeOnly(libs.bundles.edc.monitoring)

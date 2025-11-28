@@ -209,6 +209,8 @@ bouncyCastle-bcpkixJdk18on = { module = "org.bouncycastle:bcpkix-jdk18on", versi
 flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
 flyway-database-postgres = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
 jacksonJsonP = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp", version.ref = "jackson" }
+jacksonAnnotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
+jacksonDatabind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 jakarta-rsApi = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "rsApi" }
 jakartaJson = { module = "org.glassfish:jakarta.json", version.ref = "jakarta-json" }
 jakartaAnnotation = { module = "jakarta.annotation:jakarta.annotation-api", version = "2.1.1" }

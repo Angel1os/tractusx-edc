@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2021,2022 Contributors to the Eclipse Foundation
+ * Copyright (c) 2025 Contributors
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information regarding copyright ownership.
@@ -19,24 +19,20 @@
 
 plugins {
     `java-library`
-}
-
-val defaultJvmArgs = listOf(
-    "-Dedc.fs.config=${rootDir}/configuration/config.properties",
-    "-Dedc.keystore=",
-    "-Dedc.keystore.password="
-)
-
-subprojects {
-    plugins.withType<ApplicationPlugin> {
-        extensions.configure<JavaApplication> {
-            applicationDefaultJvmArgs = defaultJvmArgs
-        }
-    }
+    `maven-publish`
 }
 
 dependencies {
-    implementation(project(":edc-controlplane:edc-controlplane-base"))
-    implementation(project(":edc-controlplane:edc-runtime-memory"))
-    implementation(project(":edc-controlplane:edc-controlplane-postgresql-hashicorp-vault"))
+    implementation(project(":edc-extensions:audit-registry:audit-registry-spi"))
+
+    api(libs.edc.lib.sql)
+    api(libs.edc.spi.core)
+    api(libs.edc.spi.controlplane)
+    api(libs.edc.spi.transaction.datasource)
+    api(libs.edc.spi.transactionspi)
+
+    testImplementation(libs.edc.junit)
+    testImplementation(libs.edc.transaction.local)
+    testImplementation(testFixtures(libs.edc.sql.test.fixtures))
 }
+

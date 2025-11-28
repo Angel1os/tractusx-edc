@@ -1171,11 +1171,21 @@ Add to `configuration.properties`:
 # Enable audit registry
 edc.audit.registry.enabled=true
 
-# Data source configuration (uses default if not specified)
-edc.sql.store.audit.datasource=default
+# Datasource that backs the audit store (defined in datasource.* block)
+edc.sql.store.audit.datasource=audit
+
+# Optional schema name used by the SQL statements (defaults to "edc")
+edc.sql.store.audit.schema=admin_service
 
 # Data retention (delete records older than X days, 0 = never delete)
 edc.audit.registry.retention.days=365
+
+# Datasource definition (example: dedicated PostgreSQL instance)
+edc.datasource.audit.name=audit
+edc.datasource.audit.user=ceptra
+edc.datasource.audit.password=ceptraG$
+edc.datasource.audit.url=jdbc:postgresql://45.136.16.27:5432/ceptra_wp_dp
+edc.datasource.audit.schema=admin_service
 ```
 
 ---

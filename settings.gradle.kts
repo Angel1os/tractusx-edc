@@ -100,6 +100,11 @@ include(":edc-extensions:oauth2-hot-reload")
 include(":edc-extensions:trusted-issuers-hot-reload")
 include(":edc-extensions:user-management")
 include(":edc-extensions:gateway")
+include(":edc-extensions:audit-registry")
+include(":edc-extensions:audit-registry:audit-registry-spi")
+include(":edc-extensions:audit-registry:audit-registry-core")
+include(":edc-extensions:audit-registry:audit-registry-store-sql")
+include(":edc-extensions:audit-registry:audit-registry-api")
 
 // test modules
 include(":edc-tests:e2e-fixtures")
